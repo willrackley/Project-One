@@ -9,26 +9,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!--Custom css-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 </head>
 
 <body>
     <!--Navbar with logo-->
-    <nav class="navbar">
-            <a class="navbar-brand" href="#">
-                <img id="logoImg" src="assets/images/completeWellnessLogo.png" alt="webpage logo">
-            </a>   
-    </nav>
-
+    <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand p-0" href="#"><img id="logoImg" src="assets/images/completeWellnessLogo.png" alt="webpage logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ml-auto mr-4">
+                <a class="nav-item nav-link active text-light" href="#">Join / Log In<span class="sr-only">(current)</span></a>
+                
+              </div>
+            </div>
+          </nav>
+    
 
     <!--Jumbotron-->
-    <div class="jumbotron" id="forJumbotronImage">
-        <div class="container">
-            <h1 class="display-4 text-dark">Accomplish All Your Wellness Goals</h1>
-            <p class="lead text-dark">Food. Recipes. Fitness</p>
+    <div class="jumbotron">
+        <div class="container-fluid" id="sloganBox">
+            <h1 class="display-5" id="slogan">WELLNESS MADE EASY</h1>
+            <p class="lead text-light px-1">Find everything you need to crush your next workout <br> and maximize your diet</p>
+        </div>
     </div>
-</div>
 
     <br>
     <div class="card-header bg-secondary text-dark" id="formCard">

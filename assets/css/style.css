@@ -1,3 +1,18 @@
 .navbar {
     background: #000000;
 }
+.jumbotron  {
+    background-image: url(../images/girlsInClass.jpg);
+    background-size: cover;
+    
+}
+
+#slogan {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 27%;
+    color: rgba(255, 255, 255, 1);
+}
+
+#sloganBox {
+    margin-bottom: -40px;
+}
