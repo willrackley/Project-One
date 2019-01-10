@@ -39,21 +39,67 @@
         </div>
     </div>
 
-    <br>
-    <div class="card-header bg-secondary text-dark" id="formCard">
-            <h3>What are your goals?</h3>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    
-                    <select class="form-control" id="dropdownName">
-                        <option>lose weight</option>
-                        <option>gain muscle</option>
-                        <option>eat healthier</option>
-                    </select>
+    <!--card deck-->
+    <div class="container-fluid" id="cardDeckContainer">
+        <div class="card-deck">
+            <div class="card ">
+                <img src="assets/images/cuttingBoardFood.jpg" class="card-img-top" alt="picture of food on a cutting board" id="foodCard">
+                <div class="card-body">
+                    <p class="card-text">Find out the best ways to fuel your body. </p>
+                    <a href="#" class="btn btn-dark">learn more</a>
                 </div>
+            </div>
+            <div class="card">
+                <img  src="assets/images/measureTape.jpg" class="card-img-top" alt="picture of man pushing sled" id="measuringTapeCard">
+                <div class="card-body">
+                    <h5 class="card-title">What are your goals?</h5>
+                        <form>
+                            <div class="form-group">
+                                <select class="form-control" id="goalsDropDown">
+                                    <option>Get Active</option>
+                                    <option>Lose Fat</option>
+                                    <option>Gain Muscle</option>
+                                    <option>Eat Healthier</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark text-light">Go</button>
+                        </form>
+                </div>
+            </div>
+            <div class="card">
+                <img  src="assets/images/sled.jpg" class="card-img-top" alt="picture of man pushing sled" id="sledCard">
+                <div class="card-body">
+                    <p class="card-text">Transform your body with these exercise plans. </p>
+                    <a href="#" class="btn btn-dark">learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
     
+<!-- playing around with having images expand the with of the screen
+    <div class="container-fluid" id="foodAndSledContainer">
+        <div class="row m-0">
+            <div class="col-lg-6 ">
+                <div class="card text-white">
+                        <img src="assets/images/cuttingBoardFood.jpg" class="card-img-top" alt="picture of food on a cutting board" id="foodCard">
+                    <div class="card-img-overlay">
+                        <p class="card-text">Find out the best ways to fuel your body. </p>
+                        <a href="#" class="btn btn-dark">learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card text-white">
+                        <img  src="assets/images/sled.jpg" class="card-img-top" alt="picture of man pushing sled" id="sledCard">
+                    <div class="card-img-overlay">
+                        <p class="card-text">Transform your body with these exercise plans. </p>
+                        <a href="#" class="btn btn-dark">learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        -->
     
 
 

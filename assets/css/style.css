@@ -9,10 +9,25 @@
 
 #slogan {
     font-family: 'Open Sans', sans-serif;
-    margin-top: 27%;
+    margin-top: 25%;
     color: rgba(255, 255, 255, 1);
 }
 
-#sloganBox {
-    margin-bottom: -40px;
+#foodCard{
+    height:300px;
+    object-fit: cover;
+}
+
+#sledCard{
+    height:300px;
+    object-fit: cover;
+}
+
+#measuringTapeCard{
+    height:300px;
+    object-fit: cover;
+}
+
+.card-body{
+    border: 1px solid #cccccc;
 }
