@@ -1,0 +1,37 @@
+.navbar {
+    background: #ffffff;
+}
+.jumbotron  {
+    background-image: url(../images/girlsInClass.jpg);
+    background-size: cover;
+    
+}
+
+#slogan {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 25%;
+    color: rgba(255, 255, 255, 1);
+}
+
+#foodCard{
+    height:300px;
+    object-fit: cover;
+}
+
+#sledCard{
+    height:300px;
+    object-fit: cover;
+}
+
+#measuringTapeCard{
+    height:300px;
+    object-fit: cover;
+}
+
+.card-body{
+    border: 1px solid #cccccc;
+}
+
+.page-footer {
+    
+}
