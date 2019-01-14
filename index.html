@@ -17,26 +17,55 @@
 
 <body>
     <!--Navbar with logo-->
-    <nav class="navbar navbar-expand-lg border-bottom">
-            <a class="navbar-brand p-0" href="#"><img id="logoImg" src="assets/images/logoWhite.png" alt="webpage logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto mr-4">
+    <nav class="navbar navbar-expand-lg border-bottom fixed-top">
+        <a class="navbar-brand p-0" href="#"><img id="logoImg" src="assets/images/logoWhite.png" alt="webpage logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto mr-4">
                 <a class="nav-item nav-link active text-dark" href="#">Join / Log In<span class="sr-only">(current)</span></a>
-                
-              </div>
             </div>
-          </nav>
+        </div>
+    </nav>
     
 
-    <!--Jumbotron-->
-    <div class="jumbotron">
-        <div class="container-fluid" id="sloganBox">
+    <!--Jumbotron with carousel-->
+    <div class="jumbotron mt-5">
+        <div id="carouselContainter" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img  src="assets/images/girlsInClass.jpg" class="d-block w-100" alt="Girls in a yoga class" >
+                    <div class="carousel-caption d-none d-md-block container-fluid text-left" id="sloganBox">
+                        <h1 class="display-4" id="slogan">WELLNESS MADE EASY</h1>
+                        <p><h5>Find everything you need to crush your next workout <br> and maximize your diet</h5></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                <img src="assets/images/overheadSquat.jpg" class="d-block w-100" alt="A man perfoming an overhead squat">
+                    <div class="carousel-caption d-none d-md-block container-fluid text-left" id="sloganBox">  
+                        <h1 class="display-4" id="slogan">WORKOUTS CATERED TO YOU</h1>
+                        <p><h5>Find workouts that are specifically catered to your lifestyle</h5></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                <img src="assets/images/yellowCooking.jpg" class="d-block w-100" alt="A person chopping vegetables">
+                    <div class="carousel-caption d-none d-md-block container-fluid text-left" id="sloganBox">  
+                        <h1 class="display-4" id="slogan">GOAL CRUSHING RECIPES</h1>
+                        <p><h5>Find recipes that will keep your diet on track <br> and help you surpass your health goals</h5></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="container-fluid" id="sloganBox">
             <h1 class="display-5" id="slogan">WELLNESS MADE EASY</h1>
             <p class="lead text-light px-1">Find everything you need to crush your next workout <br> and maximize your diet</p>
-        </div>
+        </div>-->
     </div>
 
     <!--card deck-->
@@ -152,7 +181,7 @@
                 </div>
             </div>
         </form >
-        <button type="submit" id="moreInfoGoButton" class="btn btn-dark text-light mt-4">Go</button>
+        <button type="submit" id="moreInfoGoButton" class="btn btn-dark text-light mt-2">Go</button>
     </div>
     
 
@@ -163,14 +192,16 @@
     </footer>
 
       
-    
-
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery.js"></script>
-<!--javascript files-->
+<!-- Personal Javascript files-->
 <script type="text/javascript" src="assets/javascript/javascript.js"></script>
 <script type="text/javascript" src="assets/javascript/functions.js"></script>
+<!--Bootstrap Javascript files-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
