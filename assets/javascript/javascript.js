@@ -1,3 +1,4 @@
+
 /*
 Developers: Natosha, Will Rackley, Justas Lauzinskas
 Title: Complete Welness Coach
@@ -5,8 +6,13 @@ Descreption: Georgia Tech Bootcamp: Project 1
 Date: 2019-01-10
 */
 
+
+$(document).ready(function(){
+  
+
 $("#moreInfoFormContainer").hide();
 //this click event is for the 'what is your goals form
+
 $("#goalsGoButton").on("click", function() {
 	event.preventDefault();
 	$("#moreInfoFormContainer").fadeIn(2000);
@@ -73,3 +79,12 @@ $("#submit-product").on("click", function() {
 
 
 getProducts();
+  
+$("#goalsGoButton").on("click", function(){
+    event.preventDefault();
+    $("#moreInfoFormContainer").fadeIn(2000);
+});
+
+
+});    
+
