@@ -86,6 +86,7 @@ $("#submit-product").on("click", function() {
 	
 
 	//recipe api
+	//spoonacular keys 
 	$.ajax({
 		url: "https://api.edamam.com/search?q=" + usersProduct + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
 		method: "GET"
