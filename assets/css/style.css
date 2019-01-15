@@ -1,16 +1,24 @@
 .navbar {
     background: #ffffff;
 }
-.jumbotron  {
-    background-image: url(../images/girlsInClass.jpg);
-    background-size: cover;
-    
+.jumbotron{
+  
 }
 
+#carouselContainter {
+    margin: -70px -30px;
+}
 #slogan {
     font-family: 'Open Sans', sans-serif;
-    margin-top: 25%;
-    color: rgba(255, 255, 255, 1);
+}
+
+#yogaGirls {
+    height: 50%;
+}
+
+#sloganBox {
+    margin-right: -215px;
+    margin-bottom: 110px;
 }
 
 #foodCard{
