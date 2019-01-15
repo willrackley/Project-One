@@ -39,9 +39,19 @@ function getProducts() {
 	});
 }
 
+// Function to find product nutritions by product ID
+function getNutrition (productId) {
+    var queryURL = "https://api.nal.usda.gov/ndb/nutrients/?max=1&nutrients=208&ndbno=" + productId + "&api_key=" + foodApiKey;
+    console.log(queryURL);
+    $.ajax({
+		url: queryURL,
+		method: "GET"
+	}).then(function(response) {
+        console.log(response.report.foods[0]);
+    });
 
 
-
+}
 
 // Input Autocomplete by product name
 $('input[name="q"]').autoComplete({
@@ -55,7 +65,6 @@ $('input[name="q"]').autoComplete({
 	}
 });
 
-
 $("#submit-product").on("click", function() {
     var usersProduct = $("#enter-product").val().trim();
     console.log(usersProduct);
@@ -65,6 +74,7 @@ $("#submit-product").on("click", function() {
 		method: "GET"
     }).then(function(response) {
         console.log(response.list.item[0].ndbno);
+        getNutrition(response.list.item[0].ndbno);
     });
     
     
