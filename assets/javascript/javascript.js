@@ -4,6 +4,7 @@ Title: Complete Welness Coach
 Descreption: Georgia Tech Bootcamp: Project 1
 Date: 2019-01-10
 */
+
 $("#moreInfoFormContainer").hide();
 //this click event is for the 'what is your goals form
 $("#goalsGoButton").on("click", function() {
@@ -15,6 +16,7 @@ var productName = "";
 var dataSource = "Standard+Reference";
 var prodChoices = [];
 var queryURL = "https://api.nal.usda.gov/ndb/search/?offset=150&q=" + productName + "&api_key=" + foodApiKey + "&ds=" + dataSource;
+
 // Function to get all products names localy from API to prepare autocomplete input.
 function getProducts() {
 	$.ajax({
@@ -56,6 +58,7 @@ $('input[name="q"]').autoComplete({
 		suggest(matches);
 	}
 });
+// Event Listener when Submit is clicked
 $("#submit-product").on("click", function() {
 	var usersProduct = $("#enter-product").val().trim();
 	console.log(usersProduct);
@@ -68,4 +71,6 @@ $("#submit-product").on("click", function() {
 		getNutrition(response.list.item[0].ndbno);
 	});
 });
+
+// Call get Products
 getProducts();
