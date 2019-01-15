@@ -11,8 +11,10 @@ $(document).ready(function(){
   
 
 $("#moreInfoFormContainer").hide();
-//this click event is for the 'what is your goals form
+$("#nutritionFactsContainer").hide();
+$("#recipeContainer").hide();
 
+//this click event is for the 'what is your goals form
 $("#goalsGoButton").on("click", function() {
 	event.preventDefault();
 	$("#moreInfoFormContainer").fadeIn(2000);
@@ -51,6 +53,9 @@ function getNutrition(productId) {
 		method: "GET"
 	}).then(function(response) {
 		console.log(response.report.foods[0]);
+		$("#nutritionTitle").text(response.report.foods[0].name);
+		$("#nutritionServing").text("serving: " + response.report.foods[0].measure);
+		$("#nutritionCalories").text("calories: " + response.report.foods[0].nutrients[0].value);
 	});
 }
 // Input Autocomplete by product name
@@ -66,9 +71,11 @@ $('input[name="q"]').autoComplete({
 });
 // Event Listener when Submit is clicked
 $("#submit-product").on("click", function() {
+	
 	var usersProduct = $("#enter-product").val().trim();
 	console.log(usersProduct);
 	var queryURL = "https://api.nal.usda.gov/ndb/search/?max=1&q=" + usersProduct + "&api_key=" + foodApiKey + "&ds=" + dataSource;
+	
 	$.ajax({
 		url: queryURL,
 		method: "GET"
@@ -76,14 +83,36 @@ $("#submit-product").on("click", function() {
 		console.log(response.list.item[0].ndbno);
 		getNutrition(response.list.item[0].ndbno);
 	});
+	
+
+	//recipe api
+	$.ajax({
+		url: "https://api.edamam.com/search?q=" + usersProduct + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
+		method: "GET"
+	}).then(function(recipeResponse) {
+		console.log(recipeResponse);
+		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[0].recipe.image);
+		$("#firstRecipeCardTitle").text(recipeResponse.hits[0].recipe.label);
+		$("#firstRecipeCardDietType").text(recipeResponse.hits[0].recipe.dietLabels);
+		$("#firstRecipeCardUrl").attr("href", recipeResponse.hits[0].recipe.url);
+
+		$("#secondRecipeCardImg").attr("src", recipeResponse.hits[1].recipe.image);
+		$("#secondRecipeCardTitle").text(recipeResponse.hits[1].recipe.label);
+		$("#secondRecipeCardDietType").text(recipeResponse.hits[1].recipe.dietLabels);
+		$("#secondRecipeCardUrl").attr("href", recipeResponse.hits[1].recipe.url);
+
+		$("#thirdRecipeCardImg").attr("src", recipeResponse.hits[2].recipe.image);
+		$("#thirdRecipeCardTitle").text(recipeResponse.hits[2].recipe.label);
+		$("#thirdRecipeCardDietType").text(recipeResponse.hits[2].recipe.dietLabels);
+		$("#thirdRecipeCardUrl").attr("href", recipeResponse.hits[2].recipe.url);
+		
+	});
+	$("#nutritionFactsContainer").show();
+	$("#recipeContainer").show();
+	$("#enter-product").val('');
 });
 
 getProducts();
   
-$("#goalsGoButton").on("click", function(){
-    event.preventDefault();
-    $("#moreInfoFormContainer").fadeIn(2000);
-});
-
 
 });    

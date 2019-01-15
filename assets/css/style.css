@@ -1,9 +1,6 @@
 .navbar {
     background: #ffffff;
 }
-.jumbotron{
-  
-}
 
 #carouselContainter {
     margin: -70px -30px;
@@ -42,4 +39,16 @@
 
 #moreInfoFormContainer {
    width: 300px;
+}
+
+
+
+#nutritionJumboTron {
+    background-image: url(../images/womanEating.jpg);
+    background-size: cover;
+    height: 700px;
+}
+
+.jumbotron #nutritionJTContainer {
+    padding-top: 350px;
 }
