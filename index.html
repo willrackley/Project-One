@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!--Custom css-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/jquery.auto-complete.css">
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
 
@@ -141,10 +142,12 @@
                     <input type="text" class="form-control" id="ageInput">                   
                 </div>
             </div>
-        </form >
+        </form>
         <button type="submit" id="moreInfoGoButton" class="btn btn-dark text-light mt-4">Go</button>
     </div>
-    
+
+    <input id="enter-product" autofocus="" type="text" name="q" placeholder="Type product name..." style="width:100%;max-width:600px;outline:0" autocomplete="off">
+    <button type="submit" id="submit-product" class="btn btn-dark text-light">Search</button>
 
     <!-- Footer -->
     <footer class="page-footer font-small">
@@ -152,13 +155,13 @@
         <div class="footer-copyright border-top  text-center py-3 mt-5">© 2019 Copyright</div>
     </footer>
 
-      
-    
-
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery.js"></script>
+
+
 <!--javascript files-->
+<script src="assets/javascript/jquery.auto-complete.js"></script>
 <script type="text/javascript" src="assets/javascript/javascript.js"></script>
 <script type="text/javascript" src="assets/javascript/functions.js"></script>
 </body>
