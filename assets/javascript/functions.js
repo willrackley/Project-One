@@ -22,13 +22,15 @@ $("#calculate").click(function(){
 
     //gender
     //BROKEN
-   var male = $("#gender").prop("checked", true);
-   var female = $("#gender").prop("checked", false);
-   if(male === true){
-    console.log ("Male");
+   //var male = $("#maleInput:checked")
+   //var female = $("#femaleInput:checked")
+   var gender = $("input:checked").attr("value");
+ 
+   if(gender === "male"){
+    console.log ("user chose male");
     }  
-    else if(female === false){
-        console.log("Female");
+    else {
+        console.log("user chose female");
     }
 
     //from old code
