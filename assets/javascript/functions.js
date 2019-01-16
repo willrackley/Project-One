@@ -55,6 +55,13 @@ $("#calculate").click(function(){
         console.log("Height: " + height);
         
     });
+
+
+    
+    
+
+
+    
     
 
     
