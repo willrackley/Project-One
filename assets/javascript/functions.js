@@ -2,6 +2,10 @@ $("#age").val();
 console.log("#age");
 
 
+//onclick function
 $("#calculate").click(function(){
-    alert("This button was clicked.");
+    console.log("This button was clicked.");
+    var age=parseFloat($("#age").val().trim());
+    console.log(age);
+
 });
