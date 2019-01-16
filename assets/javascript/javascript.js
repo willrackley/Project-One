@@ -127,6 +127,131 @@ $("#submit-product").on("click", function() {
 	$("#enter-product").val('');
 });
 
+//low fat badge button click function
+$("#lowFatButton").on("click", function(){
+
+	$.ajax({
+		url: "https://api.edamam.com/search?q=diet=low-fat&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
+		method: "GET"
+		
+	}).then(function(recipeResponse) {
+		
+		console.log(recipeResponse);
+		
+		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[0].recipe.image);
+		$("#firstRecipeCardTitle").text(recipeResponse.hits[0].recipe.label);
+		$("#firstRecipeCardDietType").text(recipeResponse.hits[0].recipe.dietLabels);
+		$("#firstRecipeCardUrl").attr("href", recipeResponse.hits[0].recipe.url);
+
+		$("#secondRecipeCardImg").attr("src", recipeResponse.hits[1].recipe.image);
+		$("#secondRecipeCardTitle").text(recipeResponse.hits[1].recipe.label);
+		$("#secondRecipeCardDietType").text(recipeResponse.hits[1].recipe.dietLabels);
+		$("#secondRecipeCardUrl").attr("href", recipeResponse.hits[1].recipe.url);
+
+		$("#thirdRecipeCardImg").attr("src", recipeResponse.hits[2].recipe.image);
+		$("#thirdRecipeCardTitle").text(recipeResponse.hits[2].recipe.label);
+		$("#thirdRecipeCardDietType").text(recipeResponse.hits[2].recipe.dietLabels);
+		$("#thirdRecipeCardUrl").attr("href", recipeResponse.hits[2].recipe.url);
+		
+	});
+	
+	$("#recipeContainer").show();
+	
+});
+
+$("#lowCarbButton").on("click", function(){
+
+	$.ajax({
+		url: "https://api.edamam.com/search?q=diet=low-carb&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
+		method: "GET"
+		
+	}).then(function(recipeResponse) {
+		
+		console.log(recipeResponse);
+		
+		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[0].recipe.image);
+		$("#firstRecipeCardTitle").text(recipeResponse.hits[0].recipe.label);
+		$("#firstRecipeCardDietType").text(recipeResponse.hits[0].recipe.dietLabels);
+		$("#firstRecipeCardUrl").attr("href", recipeResponse.hits[0].recipe.url);
+
+		$("#secondRecipeCardImg").attr("src", recipeResponse.hits[1].recipe.image);
+		$("#secondRecipeCardTitle").text(recipeResponse.hits[1].recipe.label);
+		$("#secondRecipeCardDietType").text(recipeResponse.hits[1].recipe.dietLabels);
+		$("#secondRecipeCardUrl").attr("href", recipeResponse.hits[1].recipe.url);
+
+		$("#thirdRecipeCardImg").attr("src", recipeResponse.hits[2].recipe.image);
+		$("#thirdRecipeCardTitle").text(recipeResponse.hits[2].recipe.label);
+		$("#thirdRecipeCardDietType").text(recipeResponse.hits[2].recipe.dietLabels);
+		$("#thirdRecipeCardUrl").attr("href", recipeResponse.hits[2].recipe.url);
+		
+	});
+	
+	$("#recipeContainer").show();
+	
+});
+
+$("#highFiberButton").on("click", function(){
+
+	$.ajax({
+		url: "https://api.edamam.com/search?q=diet=high-fiber&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
+		method: "GET"
+		
+	}).then(function(recipeResponse) {
+		
+		console.log(recipeResponse);
+		
+		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[0].recipe.image);
+		$("#firstRecipeCardTitle").text(recipeResponse.hits[0].recipe.label);
+		$("#firstRecipeCardDietType").text(recipeResponse.hits[0].recipe.dietLabels);
+		$("#firstRecipeCardUrl").attr("href", recipeResponse.hits[0].recipe.url);
+
+		$("#secondRecipeCardImg").attr("src", recipeResponse.hits[1].recipe.image);
+		$("#secondRecipeCardTitle").text(recipeResponse.hits[1].recipe.label);
+		$("#secondRecipeCardDietType").text(recipeResponse.hits[1].recipe.dietLabels);
+		$("#secondRecipeCardUrl").attr("href", recipeResponse.hits[1].recipe.url);
+
+		$("#thirdRecipeCardImg").attr("src", recipeResponse.hits[2].recipe.image);
+		$("#thirdRecipeCardTitle").text(recipeResponse.hits[2].recipe.label);
+		$("#thirdRecipeCardDietType").text(recipeResponse.hits[2].recipe.dietLabels);
+		$("#thirdRecipeCardUrl").attr("href", recipeResponse.hits[2].recipe.url);
+		
+	});
+	
+	$("#recipeContainer").show();
+	
+});
+
+$("#highProteinButton").on("click", function(){
+
+	$.ajax({
+		url: "https://api.edamam.com/search?q=diet=high-protein&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=6",
+		method: "GET"
+		
+	}).then(function(recipeResponse) {
+		
+		console.log(recipeResponse);
+		
+		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[3].recipe.image);
+		$("#firstRecipeCardTitle").text(recipeResponse.hits[3].recipe.label);
+		$("#firstRecipeCardDietType").text(recipeResponse.hits[3].recipe.dietLabels);
+		$("#firstRecipeCardUrl").attr("href", recipeResponse.hits[3].recipe.url);
+
+		$("#secondRecipeCardImg").attr("src", recipeResponse.hits[4].recipe.image);
+		$("#secondRecipeCardTitle").text(recipeResponse.hits[4].recipe.label);
+		$("#secondRecipeCardDietType").text(recipeResponse.hits[4].recipe.dietLabels);
+		$("#secondRecipeCardUrl").attr("href", recipeResponse.hits[4].recipe.url);
+
+		$("#thirdRecipeCardImg").attr("src", recipeResponse.hits[5].recipe.image);
+		$("#thirdRecipeCardTitle").text(recipeResponse.hits[5].recipe.label);
+		$("#thirdRecipeCardDietType").text(recipeResponse.hits[5].recipe.dietLabels);
+		$("#thirdRecipeCardUrl").attr("href", recipeResponse.hits[5].recipe.url);
+		
+	});
+	
+	$("#recipeContainer").show();
+	
+});
+
 getProducts();
   
 
