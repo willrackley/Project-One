@@ -24,6 +24,7 @@ var productName = "";
 var dataSource = "Standard+Reference";
 var prodChoices = [];
 var queryURL = "https://api.nal.usda.gov/ndb/search/?offset=150&q=" + productName + "&api_key=" + foodApiKey + "&ds=" + dataSource;
+var userInput;
 
 // Function to get all products names localy from API to prepare autocomplete input.
 function getProducts() {
@@ -60,9 +61,10 @@ function getNutrition(productId) {
 }
 // Input Autocomplete by product name
 $('input[name="q"]').autoComplete({
-	minChars: 2,
+	minChars: 6,
 	source: function(term, suggest) {
 		term = term.toLowerCase();
+		userInput = term;
 		var matches = [];
 		for (i = 0; i < prodChoices.length; i++)
 			if (~prodChoices[i].toLowerCase().indexOf(term)) matches.push(prodChoices[i]);
@@ -75,7 +77,7 @@ $("#submit-product").on("click", function() {
 	var usersProduct = $("#enter-product").val().trim();
 	console.log(usersProduct);
 	var queryURL = "https://api.nal.usda.gov/ndb/search/?max=1&q=" + usersProduct + "&api_key=" + foodApiKey + "&ds=" + dataSource;
-	
+	console.log(userInput);
 	$.ajax({
 		url: queryURL,
 		method: "GET"
@@ -87,7 +89,7 @@ $("#submit-product").on("click", function() {
 
 	//recipe api
 	$.ajax({
-		url: "https://api.edamam.com/search?q=" + usersProduct + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
+		url: "https://api.edamam.com/search?q=" + userInput + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
 		method: "GET"
 		
 	}).then(function(recipeResponse) {
