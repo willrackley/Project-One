@@ -73,6 +73,7 @@ $('input[name="q"]').autoComplete({
 $("#submit-product").on("click", function() {
 	
 	var usersProduct = $("#enter-product").val().trim();
+	
 	console.log(usersProduct);
 	var queryURL = "https://api.nal.usda.gov/ndb/search/?max=1&q=" + usersProduct + "&api_key=" + foodApiKey + "&ds=" + dataSource;
 	
@@ -91,7 +92,9 @@ $("#submit-product").on("click", function() {
 		url: "https://api.edamam.com/search?q=" + usersProduct + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
 		method: "GET"
 	}).then(function(recipeResponse) {
+		
 		console.log(recipeResponse);
+		
 		$("#firstRecipeCardImg").attr("src", recipeResponse.hits[0].recipe.image);
 		$("#firstRecipeCardTitle").text(recipeResponse.hits[0].recipe.label);
 		$("#firstRecipeCardDietType").text(recipeResponse.hits[0].recipe.dietLabels);
