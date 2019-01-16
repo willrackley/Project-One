@@ -17,6 +17,11 @@ $("#recipeContainer").hide();
 //this click event is for the 'what is your goals form
 $("#goalsGoButton").on("click", function() {
 	event.preventDefault();
+	//if user chooses get healthier then they are redirected to nutrition page
+	if($("#goalsDropDown option:selected").text() === "Eat Healthier"){
+		window.location.replace("nutrition.html");
+	}
+	
 	$("#moreInfoFormContainer").fadeIn(2000);
 });
 var foodApiKey = "rMQ7M66s5OQxDWwDt3XXLIJQEjVxE1JHOGpKvq7r";
@@ -55,8 +60,12 @@ function getNutrition(productId) {
 	}).then(function(response) {
 		console.log(response.report.foods[0]);
 		$("#nutritionTitle").text(response.report.foods[0].name);
-		$("#nutritionServing").text("serving: " + response.report.foods[0].measure);
-		$("#nutritionCalories").text("calories: " + response.report.foods[0].nutrients[0].value);
+		$("#nutritionServing").text("Serving Size:  " + response.report.foods[0].measure);
+		$("#nutritionCalories").text("Calories:  " + response.report.foods[0].nutrients[0].gm);
+		$("#nutritionFat").text("Total Fat:  " + response.report.foods[0].nutrients[3].gm + "g");
+		$("#nutritionCarbs").text("Total Carbohydrate : " + response.report.foods[0].nutrients[4].gm + "g");
+		$("#nutritionSugars").text("Sugars:  " + response.report.foods[0].nutrients[1].gm + "g");
+		$("#nutritionProtein").text("Protein:  " + response.report.foods[0].nutrients[2].gm + "g");
 	});
 }
 // Input Autocomplete by product name
@@ -89,7 +98,6 @@ $("#submit-product").on("click", function() {
 	
 
 	//recipe api
-	//spoonacular keys 
 	$.ajax({
 		url: "https://api.edamam.com/search?q=" + userInput + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
 		method: "GET"
