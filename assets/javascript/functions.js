@@ -24,6 +24,7 @@ $("#calculate").click(function(){
     //BROKEN
    //var male = $("#maleInput:checked")
    //var female = $("#femaleInput:checked")
+   //this finds the gender name
    var gender = $("input:checked").attr("value");
  
    if(gender === "male"){
