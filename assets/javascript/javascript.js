@@ -46,7 +46,7 @@ function getProducts() {
 }
 // Function to find product nutritions by product ID
 function getNutrition(productId) {
-	var queryURL = "https://api.nal.usda.gov/ndb/nutrients/?max=1&nutrients=208&ndbno=" + productId + "&api_key=" + foodApiKey;
+	var queryURL = "https://api.nal.usda.gov/ndb/nutrients/?max=1&nutrients=208&nutrients=269&nutrients=204&nutrients=205&nutrients=203&ndbno=" + productId + "&api_key=" + foodApiKey;
 	console.log(queryURL);
 	$.ajax({
 		url: queryURL,
@@ -91,6 +91,7 @@ $("#submit-product").on("click", function() {
 	$.ajax({
 		url: "https://api.edamam.com/search?q=" + usersProduct + "&app_id=9da3c30b&app_key=19ccaeb71fe4478bcccf7eeed1597c0e&from=0&to=3",
 		method: "GET"
+		
 	}).then(function(recipeResponse) {
 		
 		console.log(recipeResponse);
