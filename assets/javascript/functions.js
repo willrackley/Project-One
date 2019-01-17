@@ -11,7 +11,6 @@ var caloriesToLoseWeight=0;
 var caloriesToGainWeight=0;
 
 
-
 //onclick function
 $("#calculate").click(function(){
     //Testing to see if event listener is working
@@ -121,9 +120,14 @@ $("#calculate").click(function(){
      $("#display-losingWeightResults").html("To lose weight your recommend daily caliore intake is:  " + caloriesToLoseWeight);
     //css/bootstrap is needed here
     $("#display-gainingWeightResults").html("To gain weight your recommend daily caliore intake is: " + caloriesToGainWeight);
-     
-     
+      
 });
+
+//event listener for when the calculate button is clicke 
+$("#calculateButton").on("click", function(){
+    event.preventDefault();
+    window.location.replace("wellnessPlan.html"); 
+})
 
 
 

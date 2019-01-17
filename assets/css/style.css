@@ -62,3 +62,13 @@
 .jumbotron #fitnessJTContainer {
     padding-top: 170px;
 }
+
+#wellnessJumboTron {
+    background-image: url(../images/meditate.jpg);
+    background-size: cover;
+    height: 500px;
+}
+
+.jumbotron #wellnessJTContainer {
+    padding-top: 300px;
+}
