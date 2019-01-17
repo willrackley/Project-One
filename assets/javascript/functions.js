@@ -6,10 +6,12 @@ var activityBmr=0;
 //not sure if needed as global variables
 var convertedFeet=0;
 var inches=0;
-
+var calculatedBmr=0;
 var caloriesToLoseWeight=0;
 var caloriesToGainWeight=0;
+
 var database = firebase.database();
+
 
 //onclick function
 $("#calculate").click(function(){
@@ -51,9 +53,12 @@ $("#calculate").click(function(){
 
 
     //height
+
     var heightForDatabase = $("#feet").val().trim() + " " + $("#inches").val().trim();
 
     $("#feet").val(function(convert){
+
+    $("#feet").val(function(){
         var feet=parseFloat($("#feet").val());
         console.log("Feet: " + feet);
         var inchesInFoot=12;
@@ -68,8 +73,8 @@ $("#calculate").click(function(){
         
         
     });
-    console.log("Test"+ heightBmr);
-   var calculatedBmr= ageBmr +  genderBmr + weightBmr + heightBmr;
+
+   var calculatedBmr= ageBmr +  genderBmr + weightBmr + (convertedFeet + inches) * 6.25;
    //convertedFeet + inches * 6.45 is heightBmr
    console.log("BMR: " + calculatedBmr);
   
