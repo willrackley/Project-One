@@ -12,10 +12,12 @@ $(document).ready(function() {
 	//this click event is for the 'what is your goals form
 	$("#goalsGoButton").on("click", function() {
 		event.preventDefault();
-		//if user chooses get healthier then they are redirected to nutrition page
+		
+		//if user chooses get healthier or get active then they are redirected to nutrition page or fitness page 
 		if ($("#goalsDropDown option:selected").text() === "Eat Healthier") {
 			window.location.replace("nutrition.html");
-		} else if($("#goalsDropDown option:selected").text() === "Get Active") {
+		} else if($("#goalsDropDown option:selected").text() === "Get Active"){
+
 			window.location.replace("fitness.html");
 		}
 
