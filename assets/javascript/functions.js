@@ -6,9 +6,10 @@ var activityBmr=0;
 //not sure if needed as global variables
 var convertedFeet=0;
 var inches=0;
-
+var calculatedBmr=0;
 var caloriesToLoseWeight=0;
 var caloriesToGainWeight=0;
+
 
 
 
@@ -34,7 +35,7 @@ $("#calculate").click(function(){
      console.log ("Age Bmr: " + genderBmr);
      }  
      else {
-        var genderBmr = 161;
+        var genderBmr = -161;
      console.log("Age Bmr: " + genderBmr);
      }
 
@@ -48,7 +49,7 @@ $("#calculate").click(function(){
 
 
     //height
-    $("#feet").val(function(convert){
+    $("#feet").val(function(){
         var feet=parseFloat($("#feet").val());
         console.log("Feet: " + feet);
         var inchesInFoot=12;
@@ -57,13 +58,14 @@ $("#calculate").click(function(){
         var inches=parseFloat($("#inches").val().trim());
         console.log("Inches: " + inches);
         var height = convertedFeet + inches;
-        var heightBmr=parseInt(height * 6.25);
+         heightBmr=parseInt(height * 6.25);
         console.log("Height Bmr: " +heightBmr);
         console.log("Height: " + height);
         
         
     });
-    
+
+
    var calculatedBmr= ageBmr +  genderBmr + weightBmr + (convertedFeet + inches) * 6.25;
    //convertedFeet + inches * 6.45 is heightBmr
    console.log("BMR: " + calculatedBmr);
