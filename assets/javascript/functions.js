@@ -7,14 +7,15 @@ var activityBmr=0;
 var convertedFeet=0;
 var inches=0;
 
+var caloriesToLoseWeight=0;
+var caloriesToGainWeight=0;
+
+
+
 //onclick function
 $("#calculate").click(function(){
     //Testing to see if event listener is working
     console.log("This button was clicked.");
-
-
-   
-    
 
     //age
     //grabbing age input from form
@@ -48,7 +49,7 @@ $("#calculate").click(function(){
 
     //height
     $("#feet").val(function(convert){
-        var feet=parseFloat($("#feet").val().trim());
+        var feet=parseFloat($("#feet").val());
         console.log("Feet: " + feet);
         var inchesInFoot=12;
         var convertedFeet= feet * inchesInFoot;
@@ -101,6 +102,30 @@ $("#calculate").click(function(){
      
      }   
      console.log("Activity BMR: " + activityBmr);
-   // console.log(calculatedBmr);
-   // point in which I am adding to github
+
+
+     //losing weight calculation
+     var caloriesToLoseWeight = calculatedBmr * activityBmr;
+     //testing
+     console.log(caloriesToLoseWeight);
+
+
+     //gainingweight calculation
+     var caloriesToGainWeight =
+     calculatedBmr * activityBmr + 500;
+     //testing
+     console.log(caloriesToGainWeight);
+
+     //Display results
+    //css/bootstrap is needed here
+     $("#display-losingWeightResults").html("To lose weight your recommend daily caliore intake is:  " + caloriesToLoseWeight);
+    //css/bootstrap is needed here
+    $("#display-gainingWeightResults").html("To gain weight your recommend daily caliore intake is: " + caloriesToGainWeight);
+     
+     
 });
+
+
+
+
+
