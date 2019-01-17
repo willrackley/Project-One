@@ -56,8 +56,6 @@ $("#calculate").click(function(){
 
     var heightForDatabase = $("#feet").val().trim() + " " + $("#inches").val().trim();
 
-    $("#feet").val(function(convert){
-
     $("#feet").val(function(){
         var feet=parseFloat($("#feet").val());
         console.log("Feet: " + feet);
@@ -74,7 +72,7 @@ $("#calculate").click(function(){
         
     });
 
-   var calculatedBmr= ageBmr +  genderBmr + weightBmr + (convertedFeet + inches) * 6.25;
+   var calculatedBmr= ageBmr +  genderBmr + weightBmr + heightBmr;
    //convertedFeet + inches * 6.45 is heightBmr
    console.log("BMR: " + calculatedBmr);
   
