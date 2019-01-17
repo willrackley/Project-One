@@ -46,9 +46,19 @@
 #nutritionJumboTron {
     background-image: url(../images/womanEating.jpg);
     background-size: cover;
-    height: 700px;
+    height: 600px;
 }
 
 .jumbotron #nutritionJTContainer {
     padding-top: 350px;
+}
+
+#fitnessJumboTron {
+    background-image: url(../images/pullUp.jpg);
+    background-size: cover;
+    height: 500px;
+}
+
+.jumbotron #fitnessJTContainer {
+    padding-top: 170px;
 }

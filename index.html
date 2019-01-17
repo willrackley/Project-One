@@ -19,7 +19,7 @@
 <body>
     <!--Navbar with logo-->
     <nav class="navbar navbar-expand-lg border-bottom fixed-top">
-        <a class="navbar-brand p-0" href="#"><img id="logoImg" src="assets/images/logoWhite.png" alt="webpage logo"></a>
+        <a class="navbar-brand p-0" href="index.html"><img id="logoImg" src="assets/images/logoWhite.png" alt="webpage logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +32,7 @@
     
 
     <!--Jumbotron with carousel-->
-    <div class="jumbotron mt-5">
+    <div class="jumbotron mt-5" id="mainCarousel">
         <div id="carouselContainter" class="carousel slide" data-ride="carousel" data-interval="4000">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -63,10 +63,6 @@
                 </div>
             </div>
         </div>
-        <!--<div class="container-fluid" id="sloganBox">
-            <h1 class="display-5" id="slogan">WELLNESS MADE EASY</h1>
-            <p class="lead text-light px-1">Find everything you need to crush your next workout <br> and maximize your diet</p>
-        </div>-->
     </div>
 
     <!--card deck-->
@@ -76,7 +72,7 @@
                 <img src="assets/images/cuttingBoardFood.jpg" class="card-img-top" alt="picture of food on a cutting board" id="foodCard">
                 <div class="card-body">
                     <p class="card-text">Find out the best ways to fuel your body. </p>
-                    <a href="#" class="btn btn-dark">learn more</a>
+                    <a href="nutrition.html" class="btn btn-dark">learn more</a>
                 </div>
             </div>
             <div class="card" id="userGoalsformCard">
@@ -99,77 +95,79 @@
             <div class="card">
                 <img  src="assets/images/sled.jpg" class="card-img-top" alt="picture of man pushing sled" id="sledCard">
                 <div class="card-body">
-                    <p class="card-text">Transform your body with these exercise plans. </p>
-                    <a href="#" class="btn btn-dark">learn more</a>
+                    <p class="card-text">Transform your body with these exercises. </p>
+                    <a href="fitness.html" class="btn btn-dark">learn more</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!--more info form-->
     <div class="container" id="moreInfoFormContainer">
-        <h5>Tell us more about yourself.</h5>
-        <div class="row">
-                <!--From original form---keeping just in case-->
-                <!--<div class="col-md-offset-4 col-md-4">-->
-            
-    
-            <form method="GET">
-                <!--Age-->
-                <div class="form-group">
-                    <label for="age">Your Age</label>
-    
-                    <div class="input-group" data-validate="number">
-                        <input type="text" class="form-control" name="age" id="age" placeholder="years"value="" required>
-                    </div>
-                </div>
-                <!--gender-->
-                <div class="form-group">
-                    <label for="gender">Gender</label>
-    
-                    <div class="input-group" data-toggle="buttons">
-                        <label class="btn btn-default active"><input id="gender" type="radio" name="gender" value="male">Male</label>
-                        <label class="btn btn-default"><input id="gender" type="radio" name="gender" value="female" >Female</label>
-                    </div>
-                </div>
-                <!--Weight-->
-                <div class="form-group">
-                    <label>Weight(lbs)</label>
-    
-                    <div class="input-group" data-validate="number">
-                        <input type="text" class="form-control" name="weight" id="weight" placeholder="lbs" required>
-                    </div>
-                </div>
-                <!--height-->
-                <div class="form-group">
-                    <label>Height(inches)</label>
-    
-                    <select class="form-control" id="feet">
-                            <option>3 Ft</option>
-                            <option>4 Ft</option>
-                            <option>5 Ft</option>
-                            <option>6 Ft</option>
-                            <option>7 Ft</option>
-                            <option>8 Ft</option>
-                        </select>
+        <h5 class="text-center mb-4">Tell us more about yourself.</h5>
+        <form method="GET">
+            <!--Age-->
+            <div class="form-group text-center">
+                <label for="age">Age</label>
 
-                        <!--(Line 155-158)Combining the code between Will's form and Natosha's Form-->
-                    <!--</div>
-                    <div class="col">-->
-                    <!--<label class="ml-1" for="exampleFormControlSelect1"></label>-->
-                    <select class="form-control" id="inches">
-                        <option>1 In</option>
-                        <option>2 In</option>
-                        <option>3 In</option>
-                        <option>4 In </option>
-                        <option>5 In</option>
-                        <option>6 In</option>
-                        <option>7 In</option>
-                        <option>8 In</option>
-                        <option>9 In</option>
-                        <option>10 In</option>
-                        <option>11 In</option>
+                <div class="input-group" data-validate="number">
+                    <input type="text" class="form-control" name="age" id="age" placeholder="years"value="" required>
+                </div>
+            </div>
+            <!--gender-->
+            <div class="form-group  text-center">
+                <label for="gender">Gender</label>
+                <div class="input-group text-center" data-toggle="buttons">
+                    <label class="btn btn-default ml-5 active "><input type="radio" name="gender" value="male" checked="checked">&nbspMale</label>
+                    <label class="btn btn-default ml-2"><input type="radio" name="gender" value="female">&nbspFemale</label>
+                </div>
+            </div>
+            <!--Weight-->
+            <div class="form-group text-center">
+                <label>Weight(lbs)</label>
+                <div class="input-group" data-validate="number">
+                    <input type="text" class="form-control" name="weight" id="weight" placeholder="lbs" required>
+                </div>
+            </div>
+            <!--height-->
+            <div class="form-group mt-2 text-center">
+                <label>Height</label>
+                <select class="form-control mb-1" id="feet">
+                        <option>3 Ft</option>
+                        <option>4 Ft</option>
+                        <option>5 Ft</option>
+                        <option>6 Ft</option>
+                        <option>7 Ft</option>
+                        <option>8 Ft</option>
+                    </select>
+                
+                <select class="form-control text-center" id="inches">
+                    <option>1 In</option>
+                    <option>2 In</option>
+                    <option>3 In</option>
+                    <option>4 In </option>
+                    <option>5 In</option>
+                    <option>6 In</option>
+                    <option>7 In</option>
+                    <option>8 In</option>
+                    <option>9 In</option>
+                    <option>10 In</option>
+                    <option>11 In</option>
+                </select>
+            </div>
+            <!--activity-level-->
+            <div class="form-group mt-2 text-center">
+                <label>Present Activity Level</label>
+                <div class="input-group">
+                    <select class="form-control" name="activity" id="activity" required>
+                        <option value="slim">Little/No Exercise</option>
+                        <option value="mild">1-3 days per week</option>
+                        <option value="moderate">3-5 days per week</option>
+                        <option value="heavy">6-7 days per week</option>
+                        <option value="extreme">2x per day</option>
                     </select>
                 </div>
+              
                 <!--activity-level-->
                 <div class="form-group">
                     <label>Present Activity Level</label>
@@ -185,10 +183,19 @@
                         </select>
                     </div>
                 </div>
-    <!--Adding comment to add to github lets pray this works-->
+    
                 <button class="btn btn-danger" onclick="resetForm();">Reset</button>
                     <button type="button" id="calculate" name="calculate" class="btn btn-primary">Calculate</button>
     
+
+            </div>
+            <div class="text-center">
+                <button class="btn btn-danger " onclick="resetForm();">Reset</button>
+                <button type="button" id="calculate" name="calculate" class="btn btn-primary">Calculate</button>
+            </div>
+        </form>
+    </div>
+
             
             
 
