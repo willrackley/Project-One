@@ -10,10 +10,17 @@ var calculatedBmr=0;
 var caloriesToLoseWeight=0;
 var caloriesToGainWeight=0;
 
+var database = firebase.database();
+
+
 //onclick function
 $("#calculate").click(function(){
     //Testing to see if event listener is working
     console.log("This button was clicked.");
+
+    //name
+    //grabbing name input from form
+    var name = $("#nameInput").val().trim();
 
     //age
     //grabbing age input from form
@@ -46,6 +53,11 @@ $("#calculate").click(function(){
 
 
     //height
+
+    var heightForDatabase = $("#feet").val().trim() + " " + $("#inches").val().trim();
+
+    $("#feet").val(function(convert){
+
     $("#feet").val(function(){
         var feet=parseFloat($("#feet").val());
         console.log("Feet: " + feet);
@@ -55,13 +67,12 @@ $("#calculate").click(function(){
         var inches=parseFloat($("#inches").val().trim());
         console.log("Inches: " + inches);
         var height = convertedFeet + inches;
-         heightBmr=parseInt(height * 6.25);
+        heightBmr=parseInt(height * 6.25);
         console.log("Height Bmr: " +heightBmr);
         console.log("Height: " + height);
         
         
     });
-
 
    var calculatedBmr= ageBmr +  genderBmr + weightBmr + (convertedFeet + inches) * 6.25;
    //convertedFeet + inches * 6.45 is heightBmr
@@ -81,10 +92,11 @@ $("#calculate").click(function(){
     //activity
     //reading activity
     //var options = $("#activity option");
-    var activity = $("#activity :selected").text();
+    var activity = $("#activity :selected").attr("value");
     console.log(activity);
     if(activity === "slim"){
         var activityBmr = 1.2;
+        console.log(activityBmr);
      }
      else if(activity === "mild"){
         var activityBmr = 1.375 ;
@@ -120,6 +132,18 @@ $("#calculate").click(function(){
      $("#display-losingWeightResults").html("To lose weight your recommend daily caliore intake is:  " + caloriesToLoseWeight);
     //css/bootstrap is needed here
     $("#display-gainingWeightResults").html("To gain weight your recommend daily caliore intake is: " + caloriesToGainWeight);
+
+    database.ref().push({
+        name: name,
+        age: age,
+        gender: gender,
+        weight: weight,
+        height: heightForDatabase,
+        BMR: calculatedBmr,
+        caloriesToLoseWeight: caloriesToLoseWeight,
+        caloriesToGainWeight: caloriesToGainWeight,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
       
 });
 
