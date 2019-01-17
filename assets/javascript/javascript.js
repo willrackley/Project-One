@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$("#moreInfoFormContainer").hide();
 	$("#nutritionFactsContainer").hide();
 	$("#recipeContainer").hide();
+	
 	//this click event is for the 'what is your goals form
 	$("#goalsGoButton").on("click", function() {
 		event.preventDefault();
@@ -16,8 +17,10 @@ $(document).ready(function() {
 		if ($("#goalsDropDown option:selected").text() === "Eat Healthier") {
 			window.location.replace("nutrition.html");
 		} else if($("#goalsDropDown option:selected").text() === "Get Active"){
+
 			window.location.replace("fitness.html");
 		}
+
 		$("#moreInfoFormContainer").fadeIn(2000);
 	});
 	var foodApiKey = "rMQ7M66s5OQxDWwDt3XXLIJQEjVxE1JHOGpKvq7r";

@@ -106,6 +106,14 @@
     <div class="container" id="moreInfoFormContainer">
         <h5 class="text-center mb-4">Tell us more about yourself.</h5>
         <form method="GET">
+            <!--name-->
+            <div class="form-group text-center">
+                <label for="name">Name</label>
+
+                <div class="input-group" data-validate="text">
+                    <input type="text" class="form-control" name="name" id="nameInput" required>
+                </div>
+            </div>
             <!--Age-->
             <div class="form-group text-center">
                 <label for="age">Age</label>
@@ -158,7 +166,7 @@
             <!--activity-level-->
             <div class="form-group mt-2 text-center">
                 <label>Present Activity Level</label>
-                <div class="input-group">
+                <div class="input-group mb-2">
                     <select class="form-control" name="activity" id="activity" required>
                         <option value="slim">Little/No Exercise</option>
                         <option value="mild">1-3 days per week</option>
@@ -167,32 +175,14 @@
                         <option value="extreme">2x per day</option>
                     </select>
                 </div>
-              
-                <!--activity-level-->
-                <div class="form-group">
-                    <label>Present Activity Level</label>
-    
-                    <div class="input-group">
-                        <select class="form-control" name="activity" id="activity" required>
-                            <option value="" id>Present Activity Level</option>
-                            <option value="slim">Little/No Exercise</option>
-                            <option value="mild">1-3 days per week</option>
-                            <option value="moderate">3-5 days per week</option>
-                            <option value="heavy">6-7 days per week</option>
-                            <option value="extreme">2x per day</option>
-                        </select>
-                    </div>
-                </div>
-    
-                <button class="btn btn-danger" onclick="resetForm();">Reset</button>
-                    <button type="button" id="calculate" name="calculate" class="btn btn-primary">Calculate</button>
 
             <div class="text-center">
                 <button class="btn btn-danger " onclick="resetForm();">Reset</button>
-                <button type="button" id="calculate" name="calculate" class="btn btn-primary">Calculate</button>
+                <button type="button" id="calculateButton" name="calculate" class="btn btn-primary">Calculate</button>
             </div>
         </form>
     </div>
+</div>
 
     <!-- Footer -->
     <footer class="page-footer font-small">
