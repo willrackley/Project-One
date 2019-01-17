@@ -68,7 +68,10 @@ $("#calculate").click(function(){
         var inches=parseFloat($("#inches").val().trim());
         console.log("Inches: " + inches);
         var height = convertedFeet + inches;
-        heightBmr=parseInt(height * 6.25);
+        var centimeters = 2.54;
+        var trueWeight=(height * centimeters);
+        console.log("Cen: " + trueWeight);
+        heightBmr=(trueWeight * 6.25);
         console.log("Height Bmr: " +heightBmr);
         console.log("Height: " + height);
         
