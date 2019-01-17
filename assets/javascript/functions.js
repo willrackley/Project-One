@@ -123,13 +123,6 @@ $("#calculate").click(function(){
       
 });
 
-//event listener for when the calculate button is clicke 
-$("#calculateButton").on("click", function(){
-    event.preventDefault();
-    window.location.replace("wellnessPlan.html"); 
-})
-
-
 
 
 
