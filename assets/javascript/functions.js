@@ -102,4 +102,5 @@ $("#calculate").click(function(){
      }   
      console.log("Activity BMR: " + activityBmr);
    // console.log(calculatedBmr);
+   // point in which I am adding to github
 });
