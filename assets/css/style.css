@@ -73,7 +73,9 @@ body h1 {
     height: 600px;
 }
 
-
+#nutritionHeader{
+    background: #52dcf5;
+}
 .jumbotron #nutritionJTContainer {
     padding-top: 350px;
 }
@@ -108,11 +110,11 @@ body {
 }
 
 .nav-item .active {
-    border: 1px solid #54e5ff;
+    border: 1px solid #52dcf5;
 }
 
 #recipeButtons button{
-    background: #54e5ff;
+    background: #52dcf5;
 }
 
 #fitnessHeader{
