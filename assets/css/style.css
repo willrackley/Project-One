@@ -2,6 +2,9 @@
     background: #ffffff;
 }
 
+body h1 {
+    font-family: 'Open Sans', sans-serif;
+}
 .navbar-nav a{
     color: black;
 }
@@ -93,6 +96,11 @@
 
 .jumbotron #wellnessJTContainer {
     padding-top: 300px;
+}
+
+#placeholder {
+    max-height: 358px;
+    width: 250px;
 }
 
 /*============= Media Queries=================*/
