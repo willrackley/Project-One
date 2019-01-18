@@ -6,12 +6,21 @@
     color: black;
 }
 
-.navbar-nav a:hover{
-    color: lightskyblue;
+.navbar-nav a:hover {
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    border: 1px solid #cccccc;
+}
+
+
+#mainCarouse{
+    margin-top: -20px;
 }
 
 #carouselContainter {
-    margin: -70px -30px;
+    
 }
 #slogan {
     font-family: 'Open Sans', sans-serif;
