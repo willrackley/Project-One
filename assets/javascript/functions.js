@@ -47,9 +47,7 @@ function usersGoalConversion(){
 	var proteinIntake = usersDailyCalories * 0.15; // 15% of calories protein
 	var dailyMealCal = [];
 
-	console.log(calsToAchieve);
 	// print to console
-	console.log ("to gain weight user has to get " + usersDailyCalories + " cals");
 	console.log ("================ users daily intake calories ================ ");
 	console.log ("daily carbs intake to gain " + carbsIntake + " cal");
 	console.log ("daily fat intake to gain " + fatIntake + " cal");
@@ -78,36 +76,48 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
     }).then(function(response) {
         if (nutrition === "carbs") {
             var carbs = dailyCalsIntake * 0.6;
-            console.log("you need to get " + carbs + " calories from " + nutrition);
-            console.log("Selected product: " + response.report.foods[0].name);
-            var productCount = carbs / response.report.foods[0].nutrients[0].value;
-            productCount = Math.round(productCount);
+            var productCount = Math.round(carbs / response.report.foods[0].nutrients[0].value);
             totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-            console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
-            console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-            console.log (totalCalsBreakfast);
+            var row = $("<tr>");
+            console.log (" total calories during this meal" + totalCalsBreakfast); // we can append this as total calories of EACH meal
+            row.appendTo("#" + mealName);
+            $("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
+            $("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
+            $("<td>" + productCount + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[0].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
+
         }
         else if (nutrition === "fat") {
             var fat = dailyCalsIntake * 0.25;
-            console.log("you need to get " + fat + " calories from " + nutrition);
-            console.log("Selected product: " + response.report.foods[0].name);
-            var productCount = fat / response.report.foods[0].nutrients[0].value;
-            productCount = Math.round(productCount);
+            var productCount = Math.round(fat / response.report.foods[0].nutrients[0].value);
             totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-            console.log ("Measure " + response.report.foods[0].measure + "  Quanity " + productCount);
-            console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-            console.log (totalCalsBreakfast);
+            var row = $("<tr>");
+            row.appendTo("#" + mealName);
+            $("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
+            $("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
+            $("<td>" + productCount + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[0].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
+            
         }
         else {
             var protein = dailyCalsIntake * 0.15;
-            console.log("you need to get " + protein + " calories from " + nutrition);
-            console.log("Selected product: " + response.report.foods[0].name);
-            var productCount = protein / response.report.foods[0].nutrients[0].value;
-            productCount = Math.round(productCount);
+            var productCount = Math.round(protein / response.report.foods[0].nutrients[0].value);
             totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-            console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
-            console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-            console.log (totalCalsBreakfast);
+            var row = $("<tr>");
+            row.appendTo("#" + mealName);
+            $("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
+            $("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
+            $("<td>" + productCount + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[0].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
+            $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
         }
     });
 }
