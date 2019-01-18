@@ -27,12 +27,16 @@
 }
 
 #yogaGirls {
-    height: 50%;
+    max-width: 2560px;
+    filter: brightness(95%);
+}
+
+#yellowCooking{ 
+    filter: brightness(95%); 
 }
 
 #sloganBox {
-    margin-right: -215px;
-    margin-bottom: 110px;
+   
 }
 
 #foodCard{
@@ -88,4 +92,29 @@
 
 .jumbotron #wellnessJTContainer {
     padding-top: 300px;
+}
+
+/*============= Media Queries=================*/
+
+@media screen and (max-width: 640px){
+    .carousel-caption h1 {
+        font-size: 20px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 12px;
+    }
+
+    #yogaGirls {
+        max-width: 2560px;
+        filter: brightness(85%);
+    }
+
+    #overheadSquat{
+        filter: brightness(90%);
+    }
+    
+    #yellowCooking{ 
+        filter: brightness(85%); 
+    }
 }
