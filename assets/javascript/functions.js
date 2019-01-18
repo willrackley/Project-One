@@ -22,7 +22,6 @@ var totalCalsBreakfast = 0;
 
 var database = firebase.database();
 
-
 function usersGoalConversion(){
 	var breakfastCarbs = ["18064", "18968", "08129", "08120", "08122"];
 	var breakfastFat = ["16097"]; 
@@ -36,15 +35,12 @@ function usersGoalConversion(){
 	var dinnerFat = ["09038", "45358502", "45324548", "45029889", "43261"]; 
 	var dinnerProtein = ["45044295", "45203420", "45258463", "45215457", "45257089"];
 
-    var snacks = ["09040", "45324896", "18051", "12061", "45176980"]; 
-    var snackCarbs = ["45005274", "45218725", "45219859", "45259892", "45210450"];
-    var snackFat = ["45084698", "12087","45213671", "09038", "45101221"];
-    var snackProtein = ["45047942","19002", "45064886","45222455"];
-   
+    var snacks = ["09040", "45324896", "18051", "12061", "45176980", "45005274", "09038", "45259892", "45005274", "45219859"]; 
 
 	// suggested foods START
 	
-	var usersDailyCalories = calsToAchieve; // we have to take this users value from database
+    var usersDailyCalories = calsToAchieve; // we have to take this users value from database
+    console.log("counted userrs cals " + usersDailyCalories);
 	var carbsIntake = parseInt(usersDailyCalories * 0.60); // 60% of calories carbs
 	var fatIntake = parseInt(usersDailyCalories * 0.25); // 25% of calories fat
 	var proteinIntake = parseInt(usersDailyCalories * 0.15); // 15% of calories protein
@@ -64,19 +60,21 @@ function usersGoalConversion(){
 	dailyMealCal.push(usersDailyCalories * 0.25); // dinner daily cals 25%
 
 	console.log(" =========== for breakfast you need " + dailyMealCal[0] + " calories ===========");
-
+    console.log (dailyMealCal);
 	addToTable(breakfastCarbs[1], "Breakfast", dailyMealCal[0], "carbs");
 	addToTable(breakfastFat[0], "Breakfast", dailyMealCal[0], "fat");
     addToTable(breakfastProtein[0], "Breakfast", dailyMealCal[0], "protein");
 
-    addToTable(snacks[0], "SnackOne", dailyMealCal[1], "carbs");
-    
+  addToTable(snacks[0], "SnackOne", dailyMealCal[1], "carbs");
+
+   console.log(" =========== for lunch you need " + dailyMealCal[2] + " calories ===========");
     addToTable(lunchCarbs[0], "Lunch", dailyMealCal[2], "carbs");
 	addToTable(lunchFat[1], "Lunch", dailyMealCal[2], "fat");
     addToTable(lunchProtein[0], "Lunch", dailyMealCal[2], "protein");
 
-    addToTable(snacks[2], "SnackTwo", dailyMealCal[3], "carbs");
+   addToTable(snacks[2], "SnackTwo", dailyMealCal[3], "carbs");
     
+  console.log(" =========== for dinner you need " + dailyMealCal[2] + " calories ===========");
     addToTable(dinnerCarbs[0], "Dinner", dailyMealCal[4], "carbs");
 	addToTable(dinnerFat[0], "Dinner", dailyMealCal[4], "fat");
 	addToTable(dinnerProtein[3], "Dinner", dailyMealCal[4], "protein");
@@ -89,12 +87,32 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+        var mealCarbsIntake = 0;
+        var mealFatIntake = 0;
+        var mealProteinIntake = 0;
+
+        if (mealName === "Breakfast") {
+            mealCarbsIntake = 0.6;
+            mealFatIntake = 0.25;
+            mealProteinIntake = 1 - mealCarbsIntake - mealFatIntake;
+        }
+        else if (mealName === "Lunch") {
+            mealCarbsIntake = 0.5;
+            mealFatIntake = 0.25;
+            mealProteinIntake = 1 - mealCarbsIntake - mealFatIntake;
+        }
+        else {
+            mealCarbsIntake = 0.35;
+            mealFatIntake = 0.25;
+            mealProteinIntake = 1 - mealCarbsIntake - mealFatIntake;
+        }
+
         if (nutrition === "carbs") {
-            var carbs = dailyCalsIntake * 0.6;
-            var productCount = Math.round(carbs / response.report.foods[0].nutrients[0].value);
+            var carbs = dailyCalsIntake * mealCarbsIntake;
+            var productCount = Math.round((carbs / response.report.foods[0].nutrients[0].value) * 2) / 2;
             totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
             var row = $("<tr>");
-            console.log (" total calories during this meal" + totalCalsBreakfast); // we can append this as total calories of EACH meal
+            console.log (" total calories during this meal from carbs" + totalCalsBreakfast); // we can append this as total calories of EACH meal
             row.appendTo("#" + mealName);
             $("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
             $("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
@@ -106,8 +124,8 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
 
         }
         else if (nutrition === "fat") {
-            var fat = dailyCalsIntake * 0.25;
-            var productCount = Math.round(fat / response.report.foods[0].nutrients[0].value);
+            var fat = dailyCalsIntake * mealFatIntake;
+            var productCount = Math.round((fat / response.report.foods[0].nutrients[0].value) * 2) / 2;
             totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
             var row = $("<tr>");
             row.appendTo("#" + mealName);
@@ -118,14 +136,18 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
             $("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row);
             $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
             $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
+            console.log (" total calories during this meal from fat " + totalCalsBreakfast); // we can append this as total calories of EACH meal
             
         }
         else {
-            var protein = dailyCalsIntake * 0.15;
-            var productCount = Math.round(protein / response.report.foods[0].nutrients[0].value);
-            totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
+            console.log(mealProteinIntake);
+            var protein = dailyCalsIntake * mealProteinIntake;
+            console.log("daily" + dailyCalsIntake);
+            var productCount = Math.round((protein / response.report.foods[0].nutrients[0].value) * 2) / 2;
+            console.log(productCount);
             var row = $("<tr>");
             row.appendTo("#" + mealName);
+            totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
             $("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
             $("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
             $("<td>" + productCount + "</td>").appendTo(row);
@@ -133,6 +155,7 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
             $("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row);
             $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
             $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
+            console.log (" total calories during this meal from protein " + totalCalsBreakfast); // we can append this as total calories of EACH meal
         }
         
     });
@@ -178,9 +201,6 @@ function getNutrition(productId) {
         $("#nutritionProtein").text("Protein:  " + response.report.foods[0].nutrients[2].gm + "g");
     });
 }
-
-
-//onclick function
 
 
 
