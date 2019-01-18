@@ -28,9 +28,6 @@ $(document).ready(function() {
 	
 	console.log(queryURL);
 	// Function to get all products names localy from API to prepare autocomplete input.
-	
-
-	
 
 	// Input Autocomplete by product name
 	$('input[name="q"]').autoComplete({
@@ -336,9 +333,6 @@ database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
     $("#userGoalCalculations").text("To " + userGoal + " you will need to eat " + calsToAchieve + " calories a day");
     
   });
-
-	
-	// Going to store healthy products IDs from USDA for each meal
 
 getProducts();
   
