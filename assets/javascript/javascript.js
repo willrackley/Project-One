@@ -88,8 +88,7 @@ $(document).ready(function() {
 				var carbs = dailyCalsIntake * 0.6;
 				console.log("you need to get " + carbs + " calories from " + nutrition);
 				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = carbs / response.report.foods[0].nutrients[0].value;
-				productCount = Math.round(productCount);
+				var productCount = Math.round(carbs / response.report.foods[0].nutrients[0].value);
 				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
 				console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
 				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
@@ -99,8 +98,7 @@ $(document).ready(function() {
 				var fat = dailyCalsIntake * 0.25;
 				console.log("you need to get " + fat + " calories from " + nutrition);
 				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = fat / response.report.foods[0].nutrients[0].value;
-				productCount = Math.round(productCount);
+				var productCount = Math.round(fat / response.report.foods[0].nutrients[0].value);
 				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
 				console.log ("Measure " + response.report.foods[0].measure + "  Quanity " + productCount);
 				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
@@ -110,8 +108,7 @@ $(document).ready(function() {
 				var protein = dailyCalsIntake * 0.15;
 				console.log("you need to get " + protein + " calories from " + nutrition);
 				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = protein / response.report.foods[0].nutrients[0].value;
-				productCount = Math.round(productCount);
+				var productCount = Math.round(protein / response.report.foods[0].nutrients[0].value);
 				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
 				console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
 				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
@@ -265,10 +262,11 @@ $("#highProteinButton").on("click", function(){
 });
 
 	// Going to store healthy products IDs from USDA for each meal
+	// https://ndb.nal.usda.gov/ndb/search/list
 
 	var breakfastCarbs = ["18064", "18968", "08129", "08120", "08122"];
 	var breakfastFat = ["16097"]; 
-	var breakfastProtein = ["01123"]; 
+	var breakfastProtein = ["01123", "01287"]; 
 
 	var lunchCarbs = []; 
 	var lunchFat = []; 
@@ -296,7 +294,6 @@ $("#highProteinButton").on("click", function(){
 	console.log ("daily fat intake to gain " + fatIntake + " cal");
 	console.log ("daily protein intake to gain " + proteinIntake + " cal");
 
-
 	dailyMealCal.push(usersDailyCalories * 0.35); // breakfast daily cals 35%
 	dailyMealCal.push(usersDailyCalories * 0.05); // snack daily cals 5%
 	dailyMealCal.push(usersDailyCalories * 0.30); // lunch daily cals 30%
@@ -305,10 +302,15 @@ $("#highProteinButton").on("click", function(){
 
 	console.log(" =========== for breakfast you need " + dailyMealCal[0] + " calories ===========");
 
-	addToTable(breakfastCarbs[1], "Breakfast", dailyMealCal[0], "carbs");
-	addToTable(breakfastFat[0], "Breakfast", dailyMealCal[0], "fat");
-	addToTable(breakfastProtein[0], "Breakfast", dailyMealCal[0], "protein");
+	// Select random product from healthy array
+	var randomBreakfastCarbs = Math.floor(Math.random()* breakfastCarbs.length);
+	var randomBreakfastFat = Math.floor(Math.random()* breakfastFat.length);
+	var randomBreakfastProtein = Math.floor(Math.random()* breakfastProtein.length);
 
+	// Select random product from healthy array
+	addToTable(breakfastCarbs[randomBreakfastCarbs], "Breakfast", dailyMealCal[0], "carbs");
+	addToTable(breakfastFat[randomBreakfastFat], "Breakfast", dailyMealCal[0], "fat");
+	addToTable(breakfastProtein[randomBreakfastProtein], "Breakfast", dailyMealCal[0], "protein");
 getProducts();
   
 
