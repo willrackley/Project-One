@@ -267,18 +267,18 @@ $("#highProteinButton").on("click", function(){
 	// Going to store healthy products IDs from USDA for each meal
 
 	var breakfastCarbs = ["18064", "18968", "08129", "08120", "08122"];
-	var breakfastFat = ["16097"]; 
-	var breakfastProtein = ["01123"]; 
+	var breakfastFat = ["16097", "28322", "12142", "45284952", "45325627"]; 
+	var breakfastProtein = ["01123", "45172015", "45281745", "45219764" , "45047909"]; 
 
-	var lunchCarbs = []; 
-	var lunchFat = []; 
-	var lunchProtein = []; 
+	var lunchCarbs = ["18036","45001664","45009665","45264241", "45227427"]; 
+	var lunchFat = ["45084698", "45050912","01040","01133","45370918",]; 
+	var lunchProtein = ["45275418", , "45060396", "45040734", "45338954", "45359340"]; 
 
-	var dinnerCarbs = []; 
-	var dinnerFat = []; 
-	var dinnerProtein = []; 
+	var dinnerCarbs = ["45067729", "45326025", "45341431", "45344313", "09252"]; 
+	var dinnerFat = ["09038", "45358502", "45324548", "45029889", "43261"]; 
+	var dinnerProtein = ["45044295", "45203420", "45258463", "45215457", "45257089	"]; 
 
-	var snacks = ["09040"];
+	var snacks = ["09040", "45324896", "18051", "12061", "45176980"];
 
 
 	// suggested foods START
