@@ -28,16 +28,19 @@ function usersGoalConversion(){
 	var breakfastFat = ["16097"]; 
 	var breakfastProtein = ["01123"]; 
 
-	var lunchCarbs = []; 
-	var lunchFat = []; 
-	var lunchProtein = []; 
+	var lunchCarbs = ["18036","45001664","45009665","45264241", "45227427"]; 
+	var lunchFat = ["45084698", "45050912","01040","01133","45370918"]; 
+	var lunchProtein = ["45275418", , "45060396", "45040734", "45338954", "45359340"];
 
-	var dinnerCarbs = []; 
-	var dinnerFat = []; 
-	var dinnerProtein = []; 
+	var dinnerCarbs = ["45067729", "45326025", "45341431", "45344313", "09252"]; 
+	var dinnerFat = ["09038", "45358502", "45324548", "45029889", "43261"]; 
+	var dinnerProtein = ["45044295", "45203420", "45258463", "45215457", "45257089"];
 
-	var snacks = ["09040"];
-
+    var snacks = ["09040", "45324896", "18051", "12061", "45176980"]; 
+    var snackCarbs = ["45005274", "45218725", "45219859", "45259892", "45210450"];
+    var snackFat = ["45084698", "12087","45213671", "09038", "45101221"];
+    var snackProtein = ["45047942","19002", "45064886","45222455"];
+   
 
 	// suggested foods START
 	
@@ -64,7 +67,19 @@ function usersGoalConversion(){
 
 	addToTable(breakfastCarbs[1], "Breakfast", dailyMealCal[0], "carbs");
 	addToTable(breakfastFat[0], "Breakfast", dailyMealCal[0], "fat");
-	addToTable(breakfastProtein[0], "Breakfast", dailyMealCal[0], "protein");
+    addToTable(breakfastProtein[0], "Breakfast", dailyMealCal[0], "protein");
+
+    addToTable(snacks[0], "SnackOne", dailyMealCal[1], "carbs");
+    
+    addToTable(lunchCarbs[0], "Lunch", dailyMealCal[2], "carbs");
+	addToTable(lunchFat[1], "Lunch", dailyMealCal[2], "fat");
+    addToTable(lunchProtein[0], "Lunch", dailyMealCal[2], "protein");
+
+    addToTable(snacks[2], "SnackTwo", dailyMealCal[3], "carbs");
+    
+    addToTable(dinnerCarbs[0], "Dinner", dailyMealCal[4], "carbs");
+	addToTable(dinnerFat[0], "Dinner", dailyMealCal[4], "fat");
+	addToTable(dinnerProtein[3], "Dinner", dailyMealCal[4], "protein");
 }
 
 // Function to find product nutritions by product ID
@@ -119,6 +134,7 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
             $("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row);
             $("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row);
         }
+        
     });
 }
 
