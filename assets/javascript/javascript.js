@@ -173,6 +173,7 @@ $("#highProteinButton").on("click", function(){
 	$("#recipeContainer").show();
 });
 
+
 $("#calculate").click(function(){
     //Testing to see if event listener is working
     console.log("This button was clicked.");

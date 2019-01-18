@@ -103,6 +103,21 @@ body h1 {
     width: 250px;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-item .active {
+    border: 1px solid #54e5ff;
+}
+
+#recipeButtons button{
+    background: #54e5ff;
+}
+
+#fitnessHeader{
+    font-family: 'Open Sans', sans-serif;
+}
 /*============= Media Queries=================*/
 
 @media screen and (max-width: 640px){

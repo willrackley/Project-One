@@ -45,9 +45,9 @@ function usersGoalConversion(){
 	// suggested foods START
 	
 	var usersDailyCalories = calsToAchieve; // we have to take this users value from database
-	var carbsIntake = usersDailyCalories * 0.60; // 60% of calories carbs
-	var fatIntake = usersDailyCalories * 0.25; // 25% of calories fat
-	var proteinIntake = usersDailyCalories * 0.15; // 15% of calories protein
+	var carbsIntake = parseInt(usersDailyCalories * 0.60); // 60% of calories carbs
+	var fatIntake = parseInt(usersDailyCalories * 0.25); // 25% of calories fat
+	var proteinIntake = parseInt(usersDailyCalories * 0.15); // 15% of calories protein
 	var dailyMealCal = [];
 
 	// print to console
