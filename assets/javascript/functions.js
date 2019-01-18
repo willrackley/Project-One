@@ -46,8 +46,11 @@ $("#calculate").click(function(){
      //weight
     //grabbing weight input from form
     var weight=parseFloat($("#weight").val().trim());
+     var kilograms=0.453592;
+     var convertWeight=Math.round( weight * kilograms );
+     console.log("Converted weight: " + convertWeight);
     //multiplying weight x 10
-    var weightBmr=(weight * 10);
+    var weightBmr=Math.round(convertWeight * 10);
     console.log("Weight: " + weight);
     console.log("Weight Bmr: " +weightBmr);
 
@@ -124,6 +127,7 @@ $("#calculate").click(function(){
      calculatedBmr * activityBmr + 500;
      //testing
      console.log(caloriesToGainWeight);
+
 
      //Display results
     //css/bootstrap is needed here
