@@ -2,6 +2,14 @@
     background: #ffffff;
 }
 
+.navbar-nav a{
+    color: black;
+}
+
+.navbar-nav a:hover{
+    color: lightskyblue;
+}
+
 #carouselContainter {
     margin: -70px -30px;
 }
