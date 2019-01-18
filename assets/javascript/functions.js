@@ -52,7 +52,7 @@ $("#calculate").click(function(){
     //multiplying weight x 10
     var weightBmr=Math.round(convertWeight * 10);
     console.log("Weight: " + weight);
-    console.log("Weight Bmr: " +weightBmr);
+    console.log("Weight Bmr: " + weightBmr);
 
 
     //height
@@ -120,7 +120,7 @@ $("#calculate").click(function(){
 
 
      //losing weight calculation
-     var caloriesToLoseWeight = calculatedBmr * activityBmr;
+     var caloriesToLoseWeight = calculatedBmr * activityBmr - 500;
      //testing
      console.log(caloriesToLoseWeight);
 
