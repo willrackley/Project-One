@@ -126,4 +126,13 @@
     #enter-product{
         margin-bottom: 10px;
     }
+
+    #fitnessJumboTron h1{
+        font-size: 30px;
+    }
+
+    #wellnessJumboTron h1 {
+        text-align: center;
+    }
+   
 }

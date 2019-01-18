@@ -301,6 +301,7 @@ $("#calculate").click(function(){
         achieveGoal = getJacked;
     }
 	
+	var activityLevel = $("#activity").val();
 
     database.ref().push({
         name: name,
@@ -308,12 +309,13 @@ $("#calculate").click(function(){
         gender: gender,
         weight: weight,
         height: heightForDatabase,
-        BMR: calculatedBmr,
+		BMR: calculatedBmr,
+		activityLevel: activityLevel,
         userGoal: userGoalSelection,
 		calsToAchieve: achieveGoal,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       });
-      
+      window.location.replace("wellnessPlan.html");
 });
 
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
@@ -323,14 +325,16 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
     var height = snapshot.val().height;
     var age = snapshot.val().age;
     var userGoal = snapshot.val().userGoal;
-    calsToAchieve = snapshot.val().calsToAchieve;
+	calsToAchieve = snapshot.val().calsToAchieve;
+	var activityLevel = snapshot.val().activityLevel
     usersGoalConversion();
 
 
-    $("#userInfoTitle").text(name+ "'s" + " " + "Body Info");
-    $("#userWeight").text("Weight: " + weight + "Lbs");
+	$("#userInfoTitle").text(name+ "'s" + " " + "Body Info");
+	$("#userAge").text("Age: " + age);
+    $("#userWeight").text("Weight: " + weight + " Lbs");
     $("#userHeight").text("Height: " + height);
-    $("#userAge").text("Age: " + age);
+    $("#userActivityLevel").text("Current Activity Level: " + activityLevel);
     $("#userGoalCalculations").text("To " + userGoal + " you will need to eat " + calsToAchieve + " calories a day");
     
   });
