@@ -25,97 +25,9 @@ $(document).ready(function() {
 
 		$("#moreInfoFormContainer").fadeIn(2000);
 	});
-	var foodApiKey = "rMQ7M66s5OQxDWwDt3XXLIJQEjVxE1JHOGpKvq7r";
-	var productName = "";
-	var dataSource = "Standard+Reference";
-	var prodChoices = [];
-	var queryURL = "https://api.nal.usda.gov/ndb/search/?offset=150&q=" + productName + "&api_key=" + foodApiKey + "&ds=" + dataSource;
-	var userInput;
-	var totalCounted = 0;
-	var totalCalsBreakfast = 0;
+	
 	console.log(queryURL);
 	// Function to get all products names localy from API to prepare autocomplete input.
-	function getProducts() {
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		}).then(function(response) {
-			var totalProducts = response.list.total;
-			for (i = 0; i < 150; i++) {
-				if (response.list.item[i].name.length < 40) {
-					prodChoices.push(response.list.item[i].name);
-				}
-				totalCounted++;
-				if (totalProducts === totalCounted) {
-					console.log(prodChoices.length)
-					break;
-				}
-			}
-			if (totalProducts > totalCounted) {
-				queryURL = "https://api.nal.usda.gov/ndb/search/?" + "&offset=" + totalCounted + "&q=" + productName + "&api_key=" + foodApiKey + "&ds=" + dataSource;
-				getProducts();
-			}
-		});
-	}
-	// Function to find product nutritions by product ID
-	function getNutrition(productId) {
-		var queryURL = "https://api.nal.usda.gov/ndb/nutrients/?max=1&nutrients=208&nutrients=269&nutrients=204&nutrients=205&nutrients=203&ndbno=" + productId + "&api_key=" + foodApiKey;
-		console.log(queryURL);
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		}).then(function(response) {
-			console.log(response.report.foods[0]);
-			$("#nutritionTitle").text(response.report.foods[0].name);
-			$("#nutritionServing").text("Serving Size:  " + response.report.foods[0].measure);
-			$("#nutritionCalories").text("Calories:  " + response.report.foods[0].nutrients[0].gm);
-			$("#nutritionFat").text("Total Fat:  " + response.report.foods[0].nutrients[3].gm + "g");
-			$("#nutritionCarbs").text("Total Carbohydrate : " + response.report.foods[0].nutrients[4].gm + "g");
-			$("#nutritionSugars").text("Sugars:  " + response.report.foods[0].nutrients[1].gm + "g");
-			$("#nutritionProtein").text("Protein:  " + response.report.foods[0].nutrients[2].gm + "g");
-		});
-	}
-
-
-	// Function to find product nutritions by product ID
-	function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
-		var queryURL = "https://api.nal.usda.gov/ndb/nutrients/?max=1&nutrients=208&nutrients=269&nutrients=204&nutrients=205&nutrients=203&ndbno=" + productId + "&api_key=" + foodApiKey;
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		}).then(function(response) {
-			if (nutrition === "carbs") {
-				var carbs = dailyCalsIntake * 0.6;
-				console.log("you need to get " + carbs + " calories from " + nutrition);
-				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = Math.round(carbs / response.report.foods[0].nutrients[0].value);
-				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-				console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
-				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-				console.log (totalCalsBreakfast);
-			}
-			else if (nutrition === "fat") {
-				var fat = dailyCalsIntake * 0.25;
-				console.log("you need to get " + fat + " calories from " + nutrition);
-				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = Math.round(fat / response.report.foods[0].nutrients[0].value);
-				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-				console.log ("Measure " + response.report.foods[0].measure + "  Quanity " + productCount);
-				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-				console.log (totalCalsBreakfast);
-			}
-			else {
-				var protein = dailyCalsIntake * 0.15;
-				console.log("you need to get " + protein + " calories from " + nutrition);
-				console.log("Selected product: " + response.report.foods[0].name);
-				var productCount = Math.round(protein / response.report.foods[0].nutrients[0].value);
-				totalCalsBreakfast = totalCalsBreakfast + productCount * response.report.foods[0].nutrients[0].value;
-				console.log ("Measure " + response.report.foods[0].measure + " Quanity " + productCount);
-				console.log("so you get from this product " + productCount * response.report.foods[0].nutrients[0].value);
-				console.log (totalCalsBreakfast);
-			}
-		});
-	}
 
 	// Input Autocomplete by product name
 	$('input[name="q"]').autoComplete({
@@ -261,56 +173,167 @@ $("#highProteinButton").on("click", function(){
 	$("#recipeContainer").show();
 });
 
-	// Going to store healthy products IDs from USDA for each meal
-	// https://ndb.nal.usda.gov/ndb/search/list
+$("#calculate").click(function(){
+    //Testing to see if event listener is working
+    console.log("This button was clicked.");
 
-	var breakfastCarbs = ["18064", "18968", "08129", "08120", "08122"];
-	var breakfastFat = ["16097"]; 
-	var breakfastProtein = ["01123", "01287"]; 
+    //name
+    //grabbing name input from form
+    var name = $("#nameInput").val().trim();
 
-	var lunchCarbs = []; 
-	var lunchFat = []; 
-	var lunchProtein = []; 
+    //age
+    //grabbing age input from form
+    var age=parseFloat($("#age").val().trim());
+    //multiplying age x 5
+    var ageBmr=(age * 5);
+    //testing output of math
+    console.log("Age Bmr: " + ageBmr);
+    console.log("Age: " + age);
 
-	var dinnerCarbs = []; 
-	var dinnerFat = []; 
-	var dinnerProtein = []; 
+    //gender
+    var gender = $("input:checked").attr("value");
+ 
+    if(gender === "male"){
+        var genderBmr = 5;
+     console.log ("Age Bmr: " + genderBmr);
+     }  
+     else {
+        var genderBmr = -161;
+     console.log("Age Bmr: " + genderBmr);
+     }
 
-	var snacks = ["09040"];
+     //weight
+    //grabbing weight input from form
+    var weight=parseFloat($("#weight").val().trim());
+     var kilograms=0.453592;
+     var convertWeight=Math.round( weight * kilograms );
+     console.log("Converted weight: " + convertWeight);
+    //multiplying weight x 10
+    var weightBmr=Math.round(convertWeight * 10);
+    console.log("Weight: " + weight);
+    console.log("Weight Bmr: " + weightBmr);
 
 
-	// suggested foods START
+    //height
 
-	var usersDailyCalories = 3000; // we have to take this users value from database
-	var carbsIntake = usersDailyCalories * 0.60; // 60% of calories carbs
-	var fatIntake = usersDailyCalories * 0.25; // 25% of calories fat
-	var proteinIntake = usersDailyCalories * 0.15; // 15% of calories protein
-	var dailyMealCal = [];
+    var heightForDatabase = $("#feet").val().trim() + " " + $("#inches").val().trim();
 
-	// print to console
-	console.log ("to gain weight user has to get " + usersDailyCalories + " cals");
-	console.log ("================ users daily intake calories ================ ");
-	console.log ("daily carbs intake to gain " + carbsIntake + " cal");
-	console.log ("daily fat intake to gain " + fatIntake + " cal");
-	console.log ("daily protein intake to gain " + proteinIntake + " cal");
+    $("#feet").val(function(){
+        var feet=parseFloat($("#feet").val());
+        console.log("Feet: " + feet);
+        var inchesInFoot=12;
+        var convertedFeet= feet * inchesInFoot;
+        console.log("Converted Feet: " + convertedFeet);
+        var inches=parseFloat($("#inches").val().trim());
+        console.log("Inches: " + inches);
+        var height = convertedFeet + inches;
+        var centimeters = 2.54;
+        var trueWeight=(height * centimeters);
+        console.log("Cen: " + trueWeight);
+        heightBmr=(trueWeight * 6.25);
+        console.log("Height Bmr: " +heightBmr);
+        console.log("Height: " + height);
+        
+        
+    });
 
-	dailyMealCal.push(usersDailyCalories * 0.35); // breakfast daily cals 35%
-	dailyMealCal.push(usersDailyCalories * 0.05); // snack daily cals 5%
-	dailyMealCal.push(usersDailyCalories * 0.30); // lunch daily cals 30%
-	dailyMealCal.push(usersDailyCalories * 0.05); // snack daily cals 5%
-	dailyMealCal.push(usersDailyCalories * 0.25); // dinner daily cals 25%
+   var calculatedBmr= ageBmr +  genderBmr + weightBmr + heightBmr;
+   //convertedFeet + inches * 6.45 is heightBmr
+   console.log("BMR: " + calculatedBmr);
+  
 
-	console.log(" =========== for breakfast you need " + dailyMealCal[0] + " calories ===========");
+    //from old code
+  //var gender=document.getElementById("gender").value;
+    //if (gender === male){
+      //  var calculatedBmr = weightBmr + heightBmr + ageBmr + male;
+    //}
+    //else if(gender === female){
+        //var calculatedBmr = weightBmr + heightBmr + ageBmr - female;
+    //};
+    
+    
+    //activity
+    //reading activity
+    //var options = $("#activity option");
+    var activity = $("#activity :selected").attr("value");
+    console.log(activity);
+    if(activity === "slim"){
+        var activityBmr = 1.2;
+        console.log(activityBmr);
+     }
+     else if(activity === "mild"){
+        var activityBmr = 1.375 ;
+     }  
+     else if(activity === "moderate"){
+        var activityBmr = 1.55;
+     }  
+     else if(activity === "heavy"){
+        var activityBmr = 1.725 ;
+     
+     }  
+     else if(activity === "extreme"){
+        var activityBmr = 1.9;
+     
+     }   
+     console.log("Activity BMR: " + activityBmr);
 
-	// Select random product from healthy array
-	var randomBreakfastCarbs = Math.floor(Math.random()* breakfastCarbs.length);
-	var randomBreakfastFat = Math.floor(Math.random()* breakfastFat.length);
-	var randomBreakfastProtein = Math.floor(Math.random()* breakfastProtein.length);
 
-	// Select random product from healthy array
-	addToTable(breakfastCarbs[randomBreakfastCarbs], "Breakfast", dailyMealCal[0], "carbs");
-	addToTable(breakfastFat[randomBreakfastFat], "Breakfast", dailyMealCal[0], "fat");
-	addToTable(breakfastProtein[randomBreakfastProtein], "Breakfast", dailyMealCal[0], "protein");
+     //losing weight calculation
+     var caloriesToLoseWeight = calculatedBmr * activityBmr - 500;
+     //testing
+     console.log(caloriesToLoseWeight);
+
+
+     //gainingweight calculation
+     var caloriesToGainWeight =
+     calculatedBmr * activityBmr + 500;
+     //testing
+     console.log(caloriesToGainWeight);
+
+
+    var userGoal = $("#goalsDropDown :selected").attr("value");
+    var userGoalSelection = $("#goalsDropDown").val();
+    if(userGoal === "Lose Fat"){
+        var getSkinny = caloriesToLoseWeight;
+        achieveGoal = parseInt(getSkinny);
+    } else if(userGoal === "Gain Muscle"){
+        var getJacked = parseInt(caloriesToGainWeight);
+        achieveGoal = getJacked;
+    }
+
+    database.ref().push({
+        name: name,
+        age: age,
+        gender: gender,
+        weight: weight,
+        height: heightForDatabase,
+        BMR: calculatedBmr,
+        userGoal: userGoalSelection,
+        calsToAchieve: achieveGoal,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+      
+});
+
+database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
+
+    var name = snapshot.val().name;
+    var weight = snapshot.val().weight;
+    var height = snapshot.val().height;
+    var age = snapshot.val().age;
+    var userGoal = snapshot.val().userGoal;
+    calsToAchieve = snapshot.val().calsToAchieve;
+    usersGoalConversion();
+
+
+    $("#userInfoTitle").text(name+ "'s" + " " + "Body Info");
+    $("#userWeight").text("Weight: " + weight + "Lbs");
+    $("#userHeight").text("Height: " + height);
+    $("#userAge").text("Age: " + age);
+    $("#userGoalCalculations").text("To " + userGoal + " you will need to eat " + calsToAchieve + " calories a day");
+    
+  });
+
 getProducts();
   
 
