@@ -300,6 +300,7 @@ $("#calculate").click(function(){
         var getJacked = parseInt(caloriesToGainWeight);
         achieveGoal = getJacked;
     }
+	
 
     database.ref().push({
         name: name,
@@ -309,13 +310,13 @@ $("#calculate").click(function(){
         height: heightForDatabase,
         BMR: calculatedBmr,
         userGoal: userGoalSelection,
-        calsToAchieve: achieveGoal,
+		calsToAchieve: achieveGoal,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       });
       
 });
 
-database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
+database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
 
     var name = snapshot.val().name;
     var weight = snapshot.val().weight;
