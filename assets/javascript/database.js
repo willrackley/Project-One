@@ -1,3 +1,10 @@
+/*
+Developers: Natosha, Will Rackley, Justas Lauzinskas
+Title: Complete Welness Coach
+Descreption: Georgia Tech Bootcamp: Project 1
+Date: 2019-01-10
+*/
+
 var config = {
     apiKey: "AIzaSyCfuJic6Pseqz8LTmf6lTbnY3CdaDlAeMU",
     authDomain: "project-1-cwc.firebaseapp.com",
@@ -7,6 +14,7 @@ var config = {
     messagingSenderId: "92922177884"
   };
   firebase.initializeApp(config);
+  var database = firebase.database();
 
 
   
