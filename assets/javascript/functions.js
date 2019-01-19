@@ -39,7 +39,7 @@ function usersGoalConversion(calsToAchieve) {
 	dailyMealCal.push(usersDailyCalories * 0.30); // Lunch 30%
 	dailyMealCal.push(usersDailyCalories * 0.05); // Snack 5%
     dailyMealCal.push(usersDailyCalories * 0.25); // Dinner 25%
-
+    console.log(dailyMealCal);
     Math.floor(Math.random() * breakfastCarbs.length)
 
     // ------------- CALL to Calculate Nutritions For Each Meal -------------
@@ -53,7 +53,7 @@ function usersGoalConversion(calsToAchieve) {
 	addToTable(lunchFat[Math.floor(Math.random() * lunchFat.length)], "Lunch", dailyMealCal[2], "fat");
     addToTable(lunchProtein[Math.floor(Math.random() * lunchProtein.length)], "Lunch", dailyMealCal[2], "protein");
 
-    addToTable(snacks[Math.floor(Math.random() * snacks.length)], "SnackTwo", dailyMealCal[3], "protein");
+    addToTable(snacks[Math.floor(Math.random() * snacks.length)+1], "SnackTwo", dailyMealCal[3], "protein");
     
 	addToTable(dinnerCarbs[Math.floor(Math.random() * dinnerCarbs.length)], "Dinner", dailyMealCal[4], "carbs");
 	addToTable(dinnerFat[Math.floor(Math.random() * dinnerFat.length)], "Dinner", dailyMealCal[4], "fat");
