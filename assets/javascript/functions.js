@@ -17,16 +17,16 @@ var dataSource = "Standard+Reference";
 var queryURL = "https://api.nal.usda.gov/ndb/search/?offset=150&q=" + productName + "&api_key=" + foodApiKey + "&ds=" + dataSource;
 
 // ------------- HEALTHY PRODUCT IDs PICKED FROM USDA WEBSITE -------------
-var breakfastCarbs = ["18064", "18968", "08129", "08120", "08122"];
-var breakfastFat = ["16097"];
-var breakfastProtein = ["01123"];
-var lunchCarbs = ["18036", "45001664", "45009665", "45264241", "45227427"];
-var lunchFat = ["45084698", "45050912", "01040", "01133", "45370918"];
-var lunchProtein = ["45275418", , "45060396", "45040734", "45338954", "45359340"];
-var dinnerCarbs = ["45067729", "45326025", "45341431", "45344313", "09252"];
-var dinnerFat = ["09038", "45358502", "45324548", "45029889", "43261"];
-var dinnerProtein = ["45044295", "45203420", "45258463", "45215457", "45257089"];
-var snacks = ["09040", "45324896", "18051", "12061", "09038", "45005274", "45219859"];
+var breakfastCarbs = ["18064", "18968", "20020", "20067", "08122"];
+var breakfastFat = ["16097", "12220", "09039"];
+var breakfastProtein = ["01123", "01130", "07026"];
+var lunchCarbs = ["18065", "20320", "20089", "11514", "	20137"];
+var lunchFat = ["09038", "09038", "01040", "01133", "12006"];
+var lunchProtein = ["05305", "01284", "05306", "15271", "06120"];
+var dinnerCarbs = ["45067729", "20133", "18042", "20137", "09252"];
+var dinnerFat = ["09038", "09195", "15077", "15012", "43261"];
+var dinnerProtein = ["36013", "15269", "15270", "15271", "15262", "35016"];
+var snacks = ["09040", "25059", "18051", "12061", "09038", "01284", "25071"];
 
 // Function to calculate each meals calories and prepare table for DOM
 function usersGoalConversion(calsToAchieve) {
@@ -40,22 +40,24 @@ function usersGoalConversion(calsToAchieve) {
 	dailyMealCal.push(usersDailyCalories * 0.05); // Snack 5%
     dailyMealCal.push(usersDailyCalories * 0.25); // Dinner 25%
 
-    // ------------- CALL to Calculate Nutritions For Each Meal -------------
-	addToTable(breakfastCarbs[1], "Breakfast", dailyMealCal[0], "carbs");
-	addToTable(breakfastFat[0], "Breakfast", dailyMealCal[0], "fat");
-    addToTable(breakfastProtein[0], "Breakfast", dailyMealCal[0], "protein");
-    
-    addToTable(snacks[0], "SnackOne", dailyMealCal[1], "carbs");
-    
-	addToTable(lunchCarbs[0], "Lunch", dailyMealCal[2], "carbs");
-	addToTable(lunchFat[1], "Lunch", dailyMealCal[2], "fat");
-    addToTable(lunchProtein[0], "Lunch", dailyMealCal[2], "protein");
+    Math.floor(Math.random() * breakfastCarbs.length)
 
-    addToTable(snacks[2], "SnackTwo", dailyMealCal[3], "carbs");
+    // ------------- CALL to Calculate Nutritions For Each Meal -------------
+	addToTable(breakfastCarbs[Math.floor(Math.random() * breakfastCarbs.length)], "Breakfast", dailyMealCal[0], "carbs");
+	addToTable(breakfastFat[Math.floor(Math.random() * breakfastFat.length)], "Breakfast", dailyMealCal[0], "fat");
+    addToTable(breakfastProtein[Math.floor(Math.random() * breakfastProtein.length)], "Breakfast", dailyMealCal[0], "protein");
     
-	addToTable(dinnerCarbs[0], "Dinner", dailyMealCal[4], "carbs");
-	addToTable(dinnerFat[0], "Dinner", dailyMealCal[4], "fat");
-	addToTable(dinnerProtein[3], "Dinner", dailyMealCal[4], "protein");
+    addToTable(snacks[Math.floor(Math.random() * snacks.length)], "SnackOne", dailyMealCal[1], "protein");
+    
+	addToTable(lunchCarbs[Math.floor(Math.random() * lunchCarbs.length)], "Lunch", dailyMealCal[2], "carbs");
+	addToTable(lunchFat[Math.floor(Math.random() * lunchFat.length)], "Lunch", dailyMealCal[2], "fat");
+    addToTable(lunchProtein[Math.floor(Math.random() * lunchProtein.length)], "Lunch", dailyMealCal[2], "protein");
+
+    addToTable(snacks[Math.floor(Math.random() * snacks.length)], "SnackTwo", dailyMealCal[3], "protein");
+    
+	addToTable(dinnerCarbs[Math.floor(Math.random() * dinnerCarbs.length)], "Dinner", dailyMealCal[4], "carbs");
+	addToTable(dinnerFat[Math.floor(Math.random() * dinnerFat.length)], "Dinner", dailyMealCal[4], "fat");
+	addToTable(dinnerProtein[Math.floor(Math.random() * dinnerProtein.length)], "Dinner", dailyMealCal[4], "protein");
 }
 
 // Function to append calculated information of product to table
@@ -65,10 +67,10 @@ function printToPage(mealName, response, productCount) {
 	$("<td>" + response.report.foods[0].name + "</td>").appendTo(row);
 	$("<td>" + response.report.foods[0].measure + "</td>").appendTo(row);
 	$("<td>" + productCount + "</td>").appendTo(row);
-	$("<td>" + productCount * response.report.foods[0].nutrients[0].value + "</td>").appendTo(row); // Calories
-	$("<td>" + productCount * response.report.foods[0].nutrients[4].value + "</td>").appendTo(row); // Carbs
-	$("<td>" + productCount * response.report.foods[0].nutrients[3].value + "</td>").appendTo(row); // Fat
-	$("<td>" + productCount * response.report.foods[0].nutrients[2].value + "</td>").appendTo(row); // Protein
+	$("<td>" + Math.round(productCount * response.report.foods[0].nutrients[0].value) + "</td>").appendTo(row); // Calories
+	$("<td>" + Math.round(productCount * response.report.foods[0].nutrients[4].value) + "</td>").appendTo(row); // Carbs
+	$("<td>" + Math.round(productCount * response.report.foods[0].nutrients[3].value) + "</td>").appendTo(row); // Fat
+	$("<td>" + Math.round(productCount * response.report.foods[0].nutrients[2].value) + "</td>").appendTo(row); // Protein
 }
 
 // Function to calculate product count, calories and other nutrition information
@@ -93,11 +95,14 @@ function addToTable(productId, mealName, dailyCalsIntake, nutrition) {
 			mealFatIntake = 0.25;
             mealProteinIntake = 0.25;
         // Dinner, we don't need a lot of ENERGY (carbs) 35%
-		} else {
+		} else if (mealName === "Dinner"){
 			mealCarbsIntake = 0.35;
 			mealFatIntake = 0.25;
 			mealProteinIntake = 0.4;
+        } else { // Snacks
+            mealProteinIntake = 1;
         }
+
         // Calculate actual calories for each nutrition and print to table
 		if (nutrition === "carbs") {
             var carbs = dailyCalsIntake * mealCarbsIntake;
