@@ -162,6 +162,7 @@ function getNutrition(productId) {
 }
 
 function selectRecepies (url) {
+    $("#nutritionFactsContainer").hide();
     $.ajax({
         url: url,
         method: "GET"
