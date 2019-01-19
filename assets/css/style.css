@@ -10,6 +10,7 @@ body h1 {
 }
 
 .navbar-nav a:hover {
+    color: #52dcf5;
 }
 
 .navbar-toggler-icon {
